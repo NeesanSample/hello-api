@@ -1,8 +1,8 @@
-FROM eclipse-temurin:21-jdk AS build
+FROM maven:3.9-eclipse-temurin-21 AS build
 WORKDIR /app
 
 COPY . .
-RUN chmod +x mvnw && ./mvnw -B clean verify
+RUN mvn -B clean verify
 
 FROM eclipse-temurin:21-jre
 WORKDIR /app
